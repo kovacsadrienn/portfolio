@@ -1,11 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans, Playfair_Display, Space_Grotesk } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Noto_Sans,
+  Playfair_Display,
+  Space_Grotesk,
+  Merriweather,
+  Manrope,
+  Montserrat,
+  Oxanium,
+} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const playfairDisplayHeading = Playfair_Display({subsets:['latin'],variable:'--font-heading'});
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
 
-const spaceGrotesk = Space_Grotesk({subsets:['latin'],variable:'--font-sans'});
+const oxaniumHeading = Oxanium({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
+
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +48,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", spaceGrotesk.variable, playfairDisplayHeading.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        "dark",
+        geistSans.variable,
+        geistMono.variable,
+        merriweather.variable,
+        "font-sans",
+        montserrat.variable,
+        oxaniumHeading.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-neutral-950 text-neutral-50">
+        {children}
+      </body>
     </html>
   );
 }
